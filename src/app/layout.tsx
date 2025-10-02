@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import { CartProvider } from "@/context/CartContext";
+import { Cart } from "@/components/Cart";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -34,13 +36,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${poppins.variable} ${outfit.variable} font-sans bg-brand-dark text-brand-light antialiased`}>
-        <div className="flex flex-col min-h-[88dvh]">
-          <Navbar />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </div>
-        <FloatingWhatsApp />
+      <body className={`${poppins.variable} ${outfit.variable} font-sans antialiased`}>
+        <CartProvider>
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
+          <FloatingWhatsApp />
+          <Cart />
+        </CartProvider>
       </body>
     </html>
   );

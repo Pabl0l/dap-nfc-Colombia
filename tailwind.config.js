@@ -8,11 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'brand-blue-light': '#59A5D8',
-        'brand-blue': '#386FA4',
-        'brand-blue-dark': '#133C55',
-        'brand-dark': '#010101',
-        'brand-light': '#f1f1f1',
+        primary: '#133C55', // brand-blue-dark
+        secondary: '#386FA4', // brand-blue
+        accent: '#59A5D8', // brand-blue-light
+        dark: '#010101', // brand-dark
+        light: '#f1f1f1', // brand-light
       },
       fontFamily: {
         sans: ['var(--font-outfit)', 'sans-serif'],
@@ -20,7 +20,21 @@ module.exports = {
       },
       backgroundImage: {
         'grid-pattern': "url('/grid.svg')",
-      }
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'subtle-slide-up': 'subtleSlideUp 0.7s ease-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        subtleSlideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
     },
   },
   plugins: [],

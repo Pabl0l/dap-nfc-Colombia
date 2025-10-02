@@ -1,126 +1,99 @@
 import Image from 'next/image';
 import { Zap, Smartphone, Share2, Settings, CheckCircle } from 'lucide-react';
+import Link from 'next/link';
 
 export default function SobreNFCPage() {
   const features = [
     {
-      icon: <Zap className="w-12 h-12 text-brand-blue-light" />,
+      icon: <Zap className="w-10 h-10 text-accent" />,
       title: "¿Qué es la Tecnología NFC?",
       description: "Near Field Communication (NFC) es una tecnología de comunicación inalámbrica de corto alcance que permite el intercambio de datos entre dispositivos con solo acercarlos.",
-      image: "/images/placeholder.svg",
       reverse: false
     },
     {
-      icon: <Smartphone className="w-12 h-12 text-brand-blue-light" />,
+      icon: <Smartphone className="w-10 h-10 text-accent" />,
       title: "Cómo Funciona",
       description: "Simplemente acerca cualquier smartphone moderno al tag NFC. No se necesitan aplicaciones especiales - el sistema operativo detecta automáticamente la información y pregunta al usuario si desea abrirla.",
-      image: "/images/placeholder.svg",
       reverse: true
     },
     {
-      icon: <Share2 className="w-12 h-12 text-brand-blue-light" />,
+      icon: <Share2 className="w-10 h-10 text-accent" />,
       title: "Comparte al Instante",
       description: "Comparte tus redes sociales, portafolio, menús digitales, Wi-Fi, números de contacto, promociones y mucho más con un simple toque.",
-      image: "/images/placeholder.svg",
       reverse: false
     },
     {
-      icon: <Settings className="w-12 h-12 text-brand-blue-light" />,
+      icon: <Settings className="w-10 h-10 text-accent" />,
       title: "Fácil Configuración",
       description: "Configuramos tus tags NFC con la información que necesites. Puedes actualizar el contenido en cualquier momento sin necesidad de reemplazar el producto físico.",
-      image: "/images/placeholder.svg",
       reverse: true
     }
   ];
 
   const benefits = [
-    {
-      icon: <CheckCircle className="w-6 h-6 text-brand-blue-light" />,
-      text: "No requiere batería ni energía externa"
-    },
-    {
-      icon: <CheckCircle className="w-6 h-6 text-brand-blue-light" />,
-      text: "Compatible con la mayoría de smartphones modernos"
-    },
-    {
-      icon: <CheckCircle className="w-6 h-6 text-brand-blue-light" />,
-      text: "Interacción instantánea - menos de 1 segundo"
-    },
-    {
-      icon: <CheckCircle className="w-6 h-6 text-brand-blue-light" />,
-      text: "Seguro - requiere proximidad de 4-10 cm"
-    },
-    {
-      icon: <CheckCircle className="w-6 h-6 text-brand-blue-light" />,
-      text: "Contenido actualizable remotamente"
-    },
-    {
-      icon: <CheckCircle className="w-6 h-6 text-brand-blue-light" />,
-      text: "Duradero y resistente al uso"
-    }
+    { text: "No requiere batería ni energía externa" },
+    { text: "Compatible con la mayoría de smartphones modernos" },
+    { text: "Interacción instantánea - menos de 1 segundo" },
+    { text: "Seguro - requiere proximidad de 4-10 cm" },
+    { text: "Contenido actualizable remotamente" },
+    { text: "Duradero y resistente al uso" }
   ];
 
   return (
-    <div className="pt-32 pb-20">
+    <div className="bg-dark text-light pt-24 md:pt-32 pb-20 animate-fade-in">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
-        <h1 className="font-display text-5xl md:text-6xl font-extrabold text-brand-light mb-6">
-          La Magia del <span className="text-brand-blue-light">NFC</span>
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20 md:mb-28 animate-subtle-slide-up">
+        <h1 className="font-display text-5xl md:text-7xl font-extrabold text-light mb-6">
+          La Magia del <span className="text-accent">NFC</span>
         </h1>
-        <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-          Descubre cómo la tecnología NFC está transformando la manera en que compartimos información, 
-          creando experiencias interactivas y sin fricciones para tus clientes y contactos.
+        <p className="text-xl text-secondary max-w-3xl mx-auto">
+          Descubre cómo la tecnología NFC está transformando la manera en que compartimos información, creando experiencias interactivas y sin fricciones.
         </p>
       </section>
 
       {/* Features Sections */}
-      {features.map((feature, index) => (
-        <section key={index} className={`py-16 ${index % 2 === 0 ? 'bg-brand-blue-dark/20' : ''}`}>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="space-y-20 md:space-y-28">
+        {features.map((feature, index) => (
+          <section key={index} className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className={`flex flex-col ${feature.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12`}>
-              <div className="lg:w-1/2">
-                <div className="flex items-center mb-6">
-                  {feature.icon}
-                  <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-light ml-4">
+              <div className="lg:w-1/2 animate-fade-in" style={{animationDelay: '200ms'}}>
+                <div className="flex items-center mb-5">
+                  <div className="bg-primary/30 p-3 rounded-full">{feature.icon}</div>
+                  <h2 className="font-display text-3xl md:text-4xl font-bold text-light ml-5">
                     {feature.title}
                   </h2>
                 </div>
-                <p className="text-lg text-gray-300 leading-relaxed">
+                <p className="text-lg text-secondary leading-relaxed">
                   {feature.description}
                 </p>
               </div>
-              <div className="lg:w-1/2">
-                <div className="relative w-full h-80 bg-brand-dark rounded-lg overflow-hidden flex items-center justify-center">
-                  <Image 
-                    src={feature.image} 
-                    alt={feature.title}
-                    width={400}
-                    height={300}
-                    className="object-cover"
-                  />
+              <div className="lg:w-1/2 w-full animate-fade-in" style={{animationDelay: '400ms'}}>
+                <div className="relative w-full aspect-video bg-primary/20 rounded-xl overflow-hidden flex items-center justify-center border border-secondary/20">
+                  {/* Placeholder visual */}
+                  <div className="w-1/2 h-1/2 bg-secondary/10 rounded-lg transform rotate-45"></div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      ))}
+          </section>
+        ))}
+      </div>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-brand-blue-dark/30">
+      <section className="py-20 md:py-28 mt-20 md:mt-28 bg-primary/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-brand-light mb-4">
+          <div className="text-center mb-16 animate-subtle-slide-up">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-light mb-4">
               Ventajas Clave
             </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Por qué la tecnología NFC es la elección perfecta para conectar tu mundo físico con el digital
+            <p className="text-xl text-secondary max-w-2xl mx-auto">
+              Por qué la tecnología NFC es la elección perfecta para tu negocio.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 max-w-5xl mx-auto">
             {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-start space-x-3 p-4">
-                {benefit.icon}
-                <p className="text-brand-light font-medium">{benefit.text}</p>
+              <div key={index} className="flex items-center space-x-4 animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
+                <CheckCircle className="w-7 h-7 text-accent flex-shrink-0" />
+                <p className="text-secondary font-medium text-lg">{benefit.text}</p>
               </div>
             ))}
           </div>
@@ -129,20 +102,19 @@ export default function SobreNFCPage() {
 
       {/* CTA Section */}
       <section className="py-20 text-center">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-brand-light mb-6">
-            ¿Listo para Comenzar?
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 animate-subtle-slide-up">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-light mb-6">
+            ¿Listo para Innovar?
           </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Explora nuestro catálogo de productos NFC y descubre cómo podemos transformar 
-            la manera en que conectas con tu audiencia.
+          <p className="text-xl text-secondary mb-8 max-w-2xl mx-auto">
+            Explora nuestro catálogo y descubre cómo podemos transformar la manera en que conectas con tu audiencia.
           </p>
-          <a 
+          <Link 
             href="/catalogo"
-            className="inline-flex items-center justify-center px-8 py-4 bg-brand-blue-light text-white font-bold rounded-full transition-all duration-300 hover:bg-brand-blue hover:scale-105 shadow-lg shadow-brand-blue/20"
+            className="group inline-flex items-center justify-center px-8 py-4 bg-accent text-dark font-bold rounded-full transition-all duration-300 hover:bg-secondary hover:text-light hover:scale-105 shadow-lg shadow-accent/20"
           >
             Ver Catálogo
-          </a>
+          </Link>
         </div>
       </section>
     </div>
