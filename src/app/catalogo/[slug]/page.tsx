@@ -66,7 +66,7 @@ export default function ProductPage({ params }: ProductPageProps) {
               <h1 className="font-display text-4xl md:text-5xl font-bold text-light mt-2 mb-4">
                 {product.name}
               </h1>
-              <p className="text-lg text-secondary mb-6">
+              <p className="text-lg text-light mb-6">
                 {product.description}
               </p>
               <p className="font-display text-4xl font-bold text-light mb-8">

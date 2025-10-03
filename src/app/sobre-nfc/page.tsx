@@ -1,6 +1,7 @@
-import Image from 'next/image';
 import { Zap, Smartphone, Share2, Settings, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
+import NfcAnimation from '@/components/NfcAnimation';
+import HowItWorksAnimation from '@/components/HowItWorksAnimation'; 
 
 export default function SobreNFCPage() {
   const features = [
@@ -46,7 +47,7 @@ export default function SobreNFCPage() {
         <h1 className="font-display text-5xl md:text-7xl font-extrabold text-light mb-6">
           La Magia del <span className="text-accent">NFC</span>
         </h1>
-        <p className="text-xl text-secondary max-w-3xl mx-auto">
+        <p className="text-xl text-light max-w-3xl mx-auto">
           Descubre cómo la tecnología NFC está transformando la manera en que compartimos información, creando experiencias interactivas y sin fricciones.
         </p>
       </section>
@@ -63,14 +64,19 @@ export default function SobreNFCPage() {
                     {feature.title}
                   </h2>
                 </div>
-                <p className="text-lg text-secondary leading-relaxed">
+                <p className="text-lg text-light leading-relaxed">
                   {feature.description}
                 </p>
               </div>
               <div className="lg:w-1/2 w-full animate-fade-in" style={{animationDelay: '400ms'}}>
-                <div className="relative w-full aspect-video bg-primary/20 rounded-xl overflow-hidden flex items-center justify-center border border-secondary/20">
-                  {/* Placeholder visual */}
-                  <div className="w-1/2 h-1/2 bg-secondary/10 rounded-lg transform rotate-45"></div>
+                <div className="relative w-full aspect-square md:aspect-video rounded-xl flex items-center justify-center">
+                  {index === 0 && <NfcAnimation />}
+                  {index === 1 && <HowItWorksAnimation />}
+                  {index > 1 && (
+                    <div className="relative w-full aspect-video bg-primary/20 rounded-xl overflow-hidden flex items-center justify-center border border-secondary/20">
+                      <div className="w-1/2 h-1/2 bg-secondary/10 rounded-lg transform rotate-45"></div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -85,7 +91,7 @@ export default function SobreNFCPage() {
             <h2 className="font-display text-4xl md:text-5xl font-bold text-light mb-4">
               Ventajas Clave
             </h2>
-            <p className="text-xl text-secondary max-w-2xl mx-auto">
+            <p className="text-xl text-light max-w-2xl mx-auto">
               Por qué la tecnología NFC es la elección perfecta para tu negocio.
             </p>
           </div>
@@ -106,7 +112,7 @@ export default function SobreNFCPage() {
           <h2 className="font-display text-4xl md:text-5xl font-bold text-light mb-6">
             ¿Listo para Innovar?
           </h2>
-          <p className="text-xl text-secondary mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-light mb-8 max-w-2xl mx-auto">
             Explora nuestro catálogo y descubre cómo podemos transformar la manera en que conectas con tu audiencia.
           </p>
           <Link 

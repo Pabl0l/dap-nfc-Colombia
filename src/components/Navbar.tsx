@@ -10,19 +10,31 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const { openCart, cart } = useCart()
 
+  // Handle scroll effect for the navbar background
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
     }
     window.addEventListener('scroll', handleScroll)
     handleScroll()
-
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const navClassName = `fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
     isScrolled 
-      ? 'bg-dark/90 backdrop-blur-sm' 
+      ? 'bg-dark/90' 
       : 'bg-transparent'
   }`
 

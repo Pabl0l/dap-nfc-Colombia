@@ -19,11 +19,11 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "dap nfc colombia - Innovación y Conectividad",
-  description: "Transforma la manera en que conectas. Con la tecnología NFC de dap, comparte tus redes, menús y más, con un solo toque. Moderno, rápido y sin apps.",
+  title: "dap NFC Colombia - Conexión Premium, Experiencia Mágica",
+  description: "Descubre la alternativa tecnológica y elegante al código QR. Conecta de forma fluida, sorprende a tus clientes y proyecta innovación con nuestros productos NFC.",
   openGraph: {
-    title: "dap nfc Colombia - Innovación y Conectividad",
-    description: "La forma más rápida e intuitiva de compartir información. Descubre nuestros productos NFC.",
+    title: "dap NFC Colombia - Conexión Premium, Experiencia Mágica",
+    description: "Eleva tu marca con dap NFC. Tarjetas y stickers que crean interacciones memorables y refuerzan tu identidad. No es un producto, es un símbolo de modernidad.",
     type: "website",
     locale: "es_CO",
   },

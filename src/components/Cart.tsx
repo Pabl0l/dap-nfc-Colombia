@@ -10,16 +10,9 @@ export const Cart = () => {
   const total = getCartTotal()
 
   const generateWhatsAppMessage = () => {
-    const header = '¡Hola! Estoy interesado en los siguientes productos de su catálogo:\n\n'
-    const items = cart.map(item => {
-      const priceNumber = parseInt(item.price.replace(/\$|\./g, ''))
-      const itemTotal = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(priceNumber * item.quantity)
-      return `*${item.name}* (x${item.quantity}) - ${itemTotal}`
-    }).join('\n')
-    
-    const footer = `\n\n*Total estimado:* ${new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(total)}`
-    
-    return `${header}${items}${footer}`
+    const header = '¡Hola! Estoy interesado en los siguientes productos:\n\n'
+    const items = cart.map(item => `*${item.name}* (x${item.quantity})`).join('\n')
+    return `${header}${items}`
   }
 
   const whatsappUrl = `https://wa.me/573042181853?text=${encodeURIComponent(generateWhatsAppMessage())}`
@@ -54,7 +47,7 @@ export const Cart = () => {
             <div className="flex-grow overflow-y-auto p-6 space-y-4">
               {cart.map(item => (
                 <div key={item.id} className="flex items-start gap-4 bg-primary/30 p-4 rounded-lg">
-                  <div className="relative w-20 h-20 rounded-md overflow-hidden bg-dark">
+                  <div className="relative w-24 aspect-[1200/859] rounded-md overflow-hidden">
                     <Image src={item.image} alt={item.name} fill className="object-contain" />
                   </div>
                   <div className="flex-grow">

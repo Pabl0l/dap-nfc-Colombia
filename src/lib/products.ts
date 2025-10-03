@@ -16,7 +16,7 @@ export const products: Product[] = [
     slug: 'tag-custom',
     name: 'Tag Custom',
     category: 'Tags',
-    description: 'El punto de partida. Un tag NFC circular y minimalista, personalizable con tu logo para un branding sutil y elegante. Ideal para vincular a tu red Wi-Fi, menú digital o portafolio.',
+    description: 'Un tag circular y minimalista con tu logo que transforma cualquier superficie en un punto de conexión instantáneo.',
     price: '$18.000',
     image: '/images/tag-custom.jpg',
     practicalUses: [
@@ -31,7 +31,7 @@ export const products: Product[] = [
     slug: 'mini-cd-case',
     name: 'Mini Case',
     category: 'Tags',
-    description: 'Complemento para tu tag de Mini CD. Un tag diseñado para la carátula, completando la experiencia retro y protegiendo tu tag.',
+    description: 'Protege y personaliza tu tag Mini CD con una carátula que completa su icónica estética retro.',
     price: '$12.000',
     image: '/images/mini-cd-case.jpg',
     practicalUses: [
@@ -46,7 +46,7 @@ export const products: Product[] = [
     slug: 'tag-mini-cd',
     name: 'Mini CD',
     category: 'Tags',
-    description: 'Estilo retro y nostálgico. Un tag con apariencia de mini CD para conectar tu música, podcast o playlist con un solo toque. El favorito de los artistas.',
+    description: 'Fusiona la nostalgia de un mini CD con tecnología NFC para compartir tu universo sonoro de forma memorable.',
     price: '$25.000',
     image: '/images/tag-mini-cd.jpg',
     practicalUses: [
@@ -61,7 +61,7 @@ export const products: Product[] = [
     slug: 'tag-pet',
     name: 'PetTag',
     category: 'Tags',
-    description: 'La placa de identificación inteligente para tu mascota. Almacena su información de contacto, historial médico y mantenla segura con un toque.',
+    description: 'Mantén a tu mascota segura y conectada con una placa inteligente que comparte su información esencial al instante.',
     price: '$20.000',
     image: '/images/tag-pet.jpg',
     practicalUses: [
@@ -78,7 +78,7 @@ export const products: Product[] = [
     slug: 'sticker-custom',
     name: 'Sticker Custom',
     category: 'Stickers',
-    description: 'Versatilidad total. Un sticker NFC que puedes adherir a cualquier superficie. Personalízalo con tu marca y úsalo en portátiles, agendas o empaques.',
+    description: 'Adhiere este sticker personalizable a cualquier objeto y conviértelo en una puerta de entrada a tu mundo digital.',
     price: '$15.000',
     image: '/images/sticker.jpg',
     practicalUses: [
@@ -93,7 +93,7 @@ export const products: Product[] = [
     slug: 'tag-menu',
     name: 'Menú sticker',
     category: 'Stickers',
-    description: 'La evolución del QR. Un sticker elegante para que los clientes de tu restaurante accedan al menú de forma instantánea, rápida y sin usar la cámara.',
+    description: 'Eleva la experiencia de tu restaurante con un sticker elegante que presenta tu menú de forma fluida y sin esfuerzo.',
     price: '$22.000',
     image: '/images/menu.jpg',
     practicalUses: [
@@ -110,7 +110,7 @@ export const products: Product[] = [
     slug: 'card-custom',
     name: 'Card Custom',
     category: 'Cards',
-    description: 'Tu tarjeta de presentación definitiva. Un diseño premium con tecnología NFC para compartir tu contacto, redes y portafolio de manera profesional e inolvidable.',
+    description: 'Redefine el networking con una tarjeta de presentación premium que comparte tu mundo profesional con un solo toque.',
     price: '$45.000',
     image: '/images/card-custom.jpg',
     practicalUses: [
@@ -125,7 +125,7 @@ export const products: Product[] = [
     slug: 'card-resena-premium',
     name: 'Reseña Premium',
     category: 'Cards',
-    description: 'Una tarjeta elegante y duradera para solicitar reseñas. Perfecta para negocios que cuidan cada detalle y buscan un feedback de alta calidad.',
+    description: 'Facilita la obtención de reseñas valiosas con una tarjeta sofisticada que refleja la calidad de tu servicio.',
     price: '$55.000',
     image: '/images/card-v-custom.jpg',
     practicalUses: [

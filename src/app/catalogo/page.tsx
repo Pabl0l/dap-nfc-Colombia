@@ -9,7 +9,7 @@ export default function CatalogoPage() {
           <h1 className="font-display text-5xl md:text-6xl font-bold text-light">
             Nuestro Catálogo
           </h1>
-          <p className="mt-4 text-lg text-secondary max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-light max-w-2xl mx-auto">
             Explora nuestra colección de productos NFC diseñados para conectar tu mundo digital con un solo toque.
           </p>
         </div>
