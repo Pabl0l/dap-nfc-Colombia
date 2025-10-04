@@ -2,6 +2,7 @@ import { Zap, Smartphone, Share2, Settings, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import NfcAnimation from '@/components/NfcAnimation';
 import HowItWorksAnimation from '@/components/HowItWorksAnimation'; 
+import InstantShareAnimation from '@/components/InstantShareAnimation';
 
 export default function SobreNFCPage() {
   const features = [
@@ -23,12 +24,7 @@ export default function SobreNFCPage() {
       description: "Comparte tus redes sociales, portafolio, menús digitales, Wi-Fi, números de contacto, promociones y mucho más con un simple toque.",
       reverse: false
     },
-    {
-      icon: <Settings className="w-10 h-10 text-accent" />,
-      title: "Fácil Configuración",
-      description: "Configuramos tus tags NFC con la información que necesites. Puedes actualizar el contenido en cualquier momento sin necesidad de reemplazar el producto físico.",
-      reverse: true
-    }
+
   ];
 
   const benefits = [
@@ -72,7 +68,8 @@ export default function SobreNFCPage() {
                 <div className="relative w-full aspect-square md:aspect-video rounded-xl flex items-center justify-center">
                   {index === 0 && <NfcAnimation />}
                   {index === 1 && <HowItWorksAnimation />}
-                  {index > 1 && (
+                  {index === 2 && <InstantShareAnimation />}
+                  {index > 2 && (
                     <div className="relative w-full aspect-video bg-primary/20 rounded-xl overflow-hidden flex items-center justify-center border border-secondary/20">
                       <div className="w-1/2 h-1/2 bg-secondary/10 rounded-lg transform rotate-45"></div>
                     </div>

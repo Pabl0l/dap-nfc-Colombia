@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .carousel-item {
+    @apply absolute transition-[transform,scale,opacity] duration-1000 ease-in-out;
+  }
+}
+
 html {
   @apply scroll-smooth;
 }
