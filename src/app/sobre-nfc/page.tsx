@@ -1,4 +1,4 @@
-import { Zap, Smartphone, Share2, Settings, CheckCircle } from 'lucide-react';
+import { Zap, Smartphone, Share2, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import NfcAnimation from '@/components/NfcAnimation';
 import HowItWorksAnimation from '@/components/HowItWorksAnimation'; 

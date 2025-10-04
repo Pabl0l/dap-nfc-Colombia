@@ -6,6 +6,8 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 import { Eye, ShoppingCart, CheckCircle } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+import Link from 'next/link';
 
 type ProductPageProps = {
   params: {
@@ -16,7 +18,7 @@ type ProductPageProps = {
 export default function ProductPage({ params }: ProductPageProps) {
   const [isBlank, setIsBlank] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
-  const { slug } = params;
+  const slug = params.slug;
   const product = getProductBySlug(slug);
   const { addToCart } = useCart();
 
@@ -75,21 +77,32 @@ export default function ProductPage({ params }: ProductPageProps) {
             </div>
 
             <div className="mt-auto pt-8" style={{ animationDelay: '300ms' }}>
-              <button 
-                onClick={handleAddToCart}
-                className={`w-full py-4 px-8 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105 ${
-                  addedToCart
-                    ? 'bg-green-500 text-white'
-                    : 'bg-accent text-dark hover:bg-secondary hover:text-light'
-                }`}
-                disabled={addedToCart}
-              >
-                {addedToCart ? (
-                  <><CheckCircle size={24} /> Añadido al carrito</>
-                ) : (
-                  <><ShoppingCart size={24} /> Añadir al Carrito</>
-                )}
-              </button>
+              <div className="flex justify-between items-center gap-4">
+                <button 
+                  onClick={handleAddToCart}
+                  className={`w-[45%] py-4 px-8 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105 ${
+                    addedToCart
+                      ? 'bg-green-500 text-white'
+                      : 'bg-accent text-dark hover:bg-secondary hover:text-light'
+                  }`}
+                  disabled={addedToCart}
+                >
+                  {addedToCart ? (
+                    <><CheckCircle size={24} /> Añadido al carrito</>
+                  ) : (
+                    <><ShoppingCart size={24} /> Añadir al Carrito</>
+                  )}
+                </button>
+                <Link
+                  href={`https://wa.me/+573001234567?text=Hola,%20estoy%20interesado%20en%20el%20producto:%20${product.name}%20del%20catálogo%20de%20dap%20NFC%20Colombia.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-[45%] py-4 px-8 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105 bg-green-500 text-white hover:bg-green-600"
+                >
+                  <FaWhatsapp size={24} />
+                  Preguntar por WhatsApp
+                </Link>
+              </div>
             </div>
 
             {/* Practical Uses Section */}

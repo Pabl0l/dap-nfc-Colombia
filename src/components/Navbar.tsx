@@ -4,11 +4,13 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X, ShoppingCart } from 'lucide-react'
 import { useCart } from '@/context/CartContext'
+import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const { openCart, cart } = useCart()
+  const pathname = usePathname()
 
   // Handle scroll effect for the navbar background
   useEffect(() => {
@@ -59,14 +61,16 @@ const Navbar = () => {
           </nav>
 
           <div className="flex items-center gap-4">
-            <button onClick={openCart} className="relative text-light hover:text-accent transition-colors">
-              <ShoppingCart size={28} />
-              {cart.length > 0 && (
-                <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-accent text-xs font-bold text-dark">
-                  {cart.length}
-                </span>
-              )}
-            </button>
+            {pathname.startsWith('/catalogo') && (
+              <button onClick={openCart} className="relative text-light hover:text-accent transition-colors">
+                <ShoppingCart size={28} />
+                {cart.length > 0 && (
+                  <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-accent text-xs font-bold text-dark">
+                    {cart.length}
+                  </span>
+                )}
+              </button>
+            )}
             <div className="md:hidden">
               <button onClick={() => setIsOpen(!isOpen)} className="text-light">
                 {isOpen ? <X size={28} /> : <Menu size={28} />}
