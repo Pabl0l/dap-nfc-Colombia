@@ -23,7 +23,7 @@ const FloatingWhatsApp = () => {
       href={whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
-      className={`fixed bottom-8 right-8 z-50 bg-accent text-dark p-4 rounded-full shadow-lg hover:bg-secondary hover:text-light transition-all duration-300 ease-in-out transform hover:scale-110 flex items-center justify-center animate-fade-in ${!isHome && 'w-16 h-16'}`}
+      className={`fixed bottom-8 right-8 z-50 bg-accent text-light p-4 rounded-full shadow-lg hover:bg-secondary hover:text-light transition-all duration-300 ease-in-out transform hover:scale-110 flex items-center justify-center animate-fade-in ${!isHome && 'w-16 h-16'}`}
       aria-label="Contactar por WhatsApp"
     >
       <FaWhatsapp size={isHome ? 28 : 32} />

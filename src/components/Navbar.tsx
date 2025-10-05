@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X, ShoppingCart } from 'lucide-react'
 import { useCart } from '@/context/CartContext'
 import { usePathname } from 'next/navigation'
@@ -43,12 +44,21 @@ const Navbar = () => {
   return (
     <header className={navClassName}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <Link href="/" className="text-3xl font-display text-light">
-            dap
-          </Link>
+        <div className="flex md:grid md:grid-cols-3 items-center justify-between h-20">
+          <div className="md:justify-self-start">
+            <Link href="/">
+              <Image
+                src="/images/Logotipo_blanco.png"
+                alt="dap NFC Colombia Logo"
+                width={85}
+                height={32}
+                style={{ objectFit: "contain" }}
+                priority
+              />
+            </Link>
+          </div>
 
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center md:justify-self-center space-x-8">
             <Link href="/" className="font-medium text-light hover:text-accent transition-colors duration-300">
               Inicio
             </Link>
@@ -60,20 +70,20 @@ const Navbar = () => {
             </Link>
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center md:justify-self-end gap-4">
             {pathname.startsWith('/catalogo') && (
               <button onClick={openCart} className="relative text-light hover:text-accent transition-colors">
                 <ShoppingCart size={28} />
                 {cart.length > 0 && (
-                  <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-accent text-xs font-bold text-dark">
+                  <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-accent text-xs font-bold text-light">
                     {cart.length}
                   </span>
                 )}
               </button>
             )}
             <div className="md:hidden">
-              <button onClick={() => setIsOpen(!isOpen)} className="text-light">
-                {isOpen ? <X size={28} /> : <Menu size={28} />}
+              <button onClick={() => setIsOpen(true)} className="text-light">
+                <Menu size={28} />
               </button>
             </div>
           </div>
@@ -82,19 +92,35 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div 
-          className={`fixed inset-0 z-40 bg-dark/95 backdrop-blur-sm md:hidden animate-fade-in`}
-        >
-          <div className="flex flex-col items-center justify-center h-full space-y-8">
-            <Link href="/" onClick={() => setIsOpen(false)} className="block text-3xl font-medium text-light hover:text-accent">
-              Inicio
-            </Link>
-            <Link href="/catalogo" onClick={() => setIsOpen(false)} className="block text-3xl font-medium text-light hover:text-accent">
-              Catálogo
-            </Link>
-            <Link href="/sobre-nfc" onClick={() => setIsOpen(false)} className="block text-3xl font-medium text-light hover:text-accent">
-              Sobre NFC
-            </Link>
+        <div className="fixed inset-0 z-[100] bg-dark md:hidden flex flex-col">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-20">
+                <Link href="/" onClick={() => setIsOpen(false)}>
+                  <Image
+                    src="/images/Logotipo_blanco.png"
+                    alt="dap NFC Colombia Logo"
+                    width={85}
+                    height={32}
+                    style={{ objectFit: "contain" }}
+                  />
+                </Link>
+              <button onClick={() => setIsOpen(false)} className="text-light">
+                <X size={32} />
+              </button>
+            </div>
+          </div>
+          <div className="flex-grow flex flex-col items-center justify-center text-center">
+            <nav className="flex flex-col gap-8">
+              <Link href="/" onClick={() => setIsOpen(false)} className="text-3xl font-display font-medium text-light hover:text-accent transition-colors">
+                Inicio
+              </Link>
+              <Link href="/catalogo" onClick={() => setIsOpen(false)} className="text-3xl font-display font-medium text-light hover:text-accent transition-colors">
+                Catálogo
+              </Link>
+              <Link href="/sobre-nfc" onClick={() => setIsOpen(false)} className="text-3xl font-display font-medium text-light hover:text-accent transition-colors">
+                Sobre NFC
+              </Link>
+            </nav>
           </div>
         </div>
       )}

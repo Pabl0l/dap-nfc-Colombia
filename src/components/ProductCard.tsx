@@ -80,7 +80,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             className={`rounded-full p-3 flex items-center justify-center transition-all duration-300 scale-100 group-hover:scale-110 ${
               addedToCart
                 ? 'bg-green-500 text-white'
-                : 'bg-accent text-dark hover:bg-secondary hover:text-light'
+                : 'bg-accent text-light hover:bg-secondary hover:text-light'
             }`}
             aria-label={`Añadir ${product.name} al carrito`}
           >

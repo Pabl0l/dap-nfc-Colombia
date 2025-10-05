@@ -1,4 +1,5 @@
 'use client'
+// Página de detalle del producto
 
 import { useState } from 'react';
 import { getProductBySlug } from '@/lib/products';
@@ -71,36 +72,47 @@ export default function ProductPage({ params }: ProductPageProps) {
               <p className="text-lg text-light mb-6">
                 {product.description}
               </p>
+              {product.slug === 'tag-menu' && (
+                <div className="bg-primary/30 p-4 rounded-lg mb-6 border border-accent/50 animate-fade-in">
+                  <p className="text-light text-base font-medium">
+                    ¿Necesitas una solución para tu negocio? Para restaurantes y empresas que requieren una cantidad superior, ofrecemos condiciones especiales.
+                  </p>
+                  <p className="text-accent text-sm mt-2">
+                    Contáctanos para una propuesta personalizada.
+                  </p>
+                </div>
+              )}
               <p className="font-display text-4xl font-bold text-light mb-8">
                 {product.price}
               </p>
             </div>
 
             <div className="mt-auto pt-8" style={{ animationDelay: '300ms' }}>
-              <div className="flex justify-between items-center gap-4">
-                <button 
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <button
                   onClick={handleAddToCart}
-                  className={`w-[45%] py-4 px-8 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105 ${
+                  className={`w-full sm:w-[48%] py-3 px-4 sm:py-4 sm:px-6 rounded-lg font-bold text-base sm:text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 ${
                     addedToCart
                       ? 'bg-green-500 text-white'
-                      : 'bg-accent text-dark hover:bg-secondary hover:text-light'
+                      : 'bg-accent text-light hover:bg-secondary hover:text-light'
                   }`}
                   disabled={addedToCart}
                 >
                   {addedToCart ? (
-                    <><CheckCircle size={24} /> Añadido al carrito</>
+                    <><CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" /> Añadido</>
                   ) : (
-                    <><ShoppingCart size={24} /> Añadir al Carrito</>
+                    <><ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6" /> Añadir al Carrito</>
                   )}
                 </button>
                 <Link
                   href={`https://wa.me/+573001234567?text=Hola,%20estoy%20interesado%20en%20el%20producto:%20${product.name}%20del%20catálogo%20de%20dap%20NFC%20Colombia.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-[45%] py-4 px-8 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105 bg-green-500 text-white hover:bg-green-600"
+                  className="w-full sm:w-[48%] py-3 px-4 sm:py-4 sm:px-6 rounded-lg font-bold text-base sm:text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 bg-green-500 text-white hover:bg-green-600"
                 >
-                  <FaWhatsapp size={24} />
-                  Preguntar por WhatsApp
+                  <FaWhatsapp className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <span className="hidden sm:inline">Preguntar por WhatsApp</span>
+                  <span className="sm:hidden">WhatsApp</span>
                 </Link>
               </div>
             </div>

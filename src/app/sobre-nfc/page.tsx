@@ -32,7 +32,7 @@ export default function SobreNFCPage() {
     { text: "Compatible con la mayoría de smartphones modernos" },
     { text: "Interacción instantánea - menos de 1 segundo" },
     { text: "Seguro - requiere proximidad de 4-10 cm" },
-    { text: "Contenido actualizable remotamente" },
+    { text: "Contenido actualizable" },
     { text: "Duradero y resistente al uso" }
   ];
 
@@ -114,7 +114,7 @@ export default function SobreNFCPage() {
           </p>
           <Link 
             href="/catalogo"
-            className="group inline-flex items-center justify-center px-8 py-4 bg-accent text-dark font-bold rounded-full transition-all duration-300 hover:bg-secondary hover:text-light hover:scale-105 shadow-lg shadow-accent/20"
+            className="group inline-flex items-center justify-center px-8 py-4 bg-accent text-light font-bold rounded-full transition-all duration-300 hover:bg-secondary hover:text-light hover:scale-105 shadow-lg shadow-accent/20"
           >
             Ver Catálogo
           </Link>

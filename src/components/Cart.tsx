@@ -59,7 +59,7 @@ export const Cart = () => {
                       <button onClick={() => incrementQuantity(item.id)} className="p-1 rounded-full bg-secondary/50 hover:bg-secondary transition-colors"><Plus size={16}/></button>
                     </div>
                   </div>
-                  <button onClick={() => removeFromCart(item.id)} className="text-secondary hover:text-red-500 transition-colors">
+                  <button onClick={() => removeFromCart(item.id)} className="text-light hover:text-red-500 transition-colors">
                     <Trash2 size={20} />
                   </button>
                 </div>
@@ -78,7 +78,7 @@ export const Cart = () => {
                 href={whatsappUrl} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-full bg-accent text-dark py-3 px-4 rounded-lg flex items-center justify-center gap-3 font-bold text-lg hover:bg-secondary hover:text-light transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="w-full bg-accent text-light py-3 px-4 rounded-lg flex items-center justify-center gap-3 font-bold text-lg hover:bg-secondary hover:text-light transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 <ShoppingCart size={22} />
                 <span>Comprar por WhatsApp</span>
