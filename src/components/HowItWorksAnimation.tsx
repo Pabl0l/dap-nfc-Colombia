@@ -50,7 +50,7 @@ const HowItWorksAnimation = () => {
         className={`absolute left-[20%] md:left-[16%] transition-all duration-500 ${hasArrived ? '[filter:drop-shadow(0_0_25px_rgba(255,255,255,0.4))]' : ''}`}
       >
         <Image
-          src="/images/tag-2.png"
+          src="/images/tag-2.webp"
           alt="NFC Tag"
           width={120}
           height={120}
@@ -66,7 +66,7 @@ const HowItWorksAnimation = () => {
         <div className="relative">
           {/* Initial phone image - always visible */}
           <Image
-            src="/images/phone.png"
+            src="/images/phone.webp"
             alt="Phone approaching NFC tag"
             width={200}
             height={200}
@@ -74,7 +74,7 @@ const HowItWorksAnimation = () => {
           />
           {/* Phone image after interaction - fades in on top */}
           <Image
-            src="/images/phone-2.png"
+            src="/images/phone-2.webp"
             alt="Phone interacting with NFC tag"
             width={200}
             height={200}

@@ -48,7 +48,7 @@ const Navbar = () => {
           <div className="md:justify-self-start">
             <Link href="/">
               <Image
-                src="/images/Logotipo_blanco.png"
+                src="/images/Logotipo_blanco.webp"
                 alt="dap NFC Colombia Logo"
                 width={85}
                 height={32}
@@ -97,7 +97,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between h-20">
                 <Link href="/" onClick={() => setIsOpen(false)}>
                   <Image
-                    src="/images/Logotipo_blanco.png"
+                    src="/images/Logotipo_blanco.webp"
                     alt="dap NFC Colombia Logo"
                     width={85}
                     height={32}

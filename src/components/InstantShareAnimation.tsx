@@ -7,32 +7,32 @@ const shareOptions = [
   {
     id: "instagram",
     name: "Instagram",
-    tagImage: "/images/instagram-tag.png",
-    contentImage: "/images/ss-instagram.png",
+    tagImage: "/images/instagram-tag.webp",
+    contentImage: "/images/ss-instagram.webp",
   },
   {
     id: "linkedin",
     name: "LinkedIn",
-    tagImage: "/images/linkedin-tag.png",
-    contentImage: "/images/ss-linkedin.png",
+    tagImage: "/images/linkedin-tag.webp",
+    contentImage: "/images/ss-linkedin.webp",
   },
   {
     id: "wifi",
     name: "WiFi",
-    tagImage: "/images/wifi-tag.png",
-    contentImage: "/images/ss-wifi.png",
+    tagImage: "/images/wifi-tag.webp",
+    contentImage: "/images/ss-wifi.webp",
   },
   {
     id: "spotify",
     name: "Spotify",
-    tagImage: "/images/spotify-tag.png",
-    contentImage: "/images/ss-spotify.png",
+    tagImage: "/images/spotify-tag.webp",
+    contentImage: "/images/ss-spotify.webp",
   },
   {
     id: "bitcoin",
     name: "Bitcoin",
-    tagImage: "/images/bitcoin-tag.png",
-    contentImage: "/images/ss-bitcoin.png",
+    tagImage: "/images/bitcoin-tag.webp",
+    contentImage: "/images/ss-bitcoin.webp",
   },
 ];
 

@@ -23,7 +23,7 @@ export const products: Product[] = [
     category: 'Tags',
     description: 'Personaliza tu tag Mini CD con una carátula que completa su icónica estética retro.',
     price: '$20.000',
-    image: '/images/mini-cd-case.jpg',
+    image: '/images/mini-cd-case.webp',
     practicalUses: [
       'Regala una playlist.',
       'Colección retro personalizada.',
@@ -44,7 +44,7 @@ export const products: Product[] = [
       price: '$20.000',
       additionalUnitPrice: '$5.000',
     },
-    image: '/images/tag-custom.jpg',
+    image: '/images/tag-custom.webp',
     practicalUses: [
       'Compartir tu contacto.',
       'Mostrar tu portafolio.',
@@ -63,7 +63,7 @@ export const products: Product[] = [
       price: '$20.000',
       additionalUnitPrice: '$5.000',
     },
-    image: '/images/tag-mini-cd.jpg',
+    image: '/images/tag-mini-cd.webp',
     practicalUses: [
       'Regalar una playlist.',
       'Promocionar tu nuevo single o álbum.',
@@ -77,7 +77,7 @@ export const products: Product[] = [
     name: 'PetTag',
     category: 'Tags',
     description: 'Mantén a tu mascota segura y conectada con una placa inteligente que comparte su información esencial al instante.',    price: '$12.000',
-    image: '/images/tag-pet.jpg',
+    image: '/images/tag-pet.webp',
     practicalUses: [
       'Almacenar datos de contacto del dueño.',
       'Guardar información médica importante.',
@@ -98,7 +98,7 @@ export const products: Product[] = [
       price: '$20.000',
       additionalUnitPrice: '$3.500',
     },
-    image: '/images/sticker.jpg',
+    image: '/images/sticker.webp',
     practicalUses: [
       'Pegarlo en tu laptop para compartir tu LinkedIn.',
       'En tu agenda para acceder a tus notas digitales.',
@@ -117,7 +117,7 @@ export const products: Product[] = [
       price: '$40.000',
       additionalUnitPrice: '$3.500',
     },
-    image: '/images/menu.jpg',
+    image: '/images/menu.webp',
     practicalUses: [
       'Acceso al menú digital en restaurantes.',
       'Ver la carta de bebidas en un bar.',
@@ -134,7 +134,7 @@ export const products: Product[] = [
     category: 'Cards',
     description: 'Redefine el networking con una tarjeta de presentación premium que comparte tu mundo profesional con un solo toque.',
     price: '$35.000',
-    image: '/images/card-custom.jpg',
+    image: '/images/card-custom.webp',
     practicalUses: [
       'Networking en eventos y conferencias.',
       'Compartir información de contacto.',
@@ -149,7 +149,7 @@ export const products: Product[] = [
     category: 'Cards',
     description: 'Facilita la obtención de reseñas valiosas con una tarjeta sofisticada que refleja la calidad de tu servicio.',
     price: '$20.000',
-    image: '/images/card-v-custom.jpg',
+    image: '/images/card-v-custom.webp',
     practicalUses: [
       'Entregar al cliente después de un servicio premium.',
       'En hoteles para calificar la estadía.',

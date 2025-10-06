@@ -44,7 +44,7 @@ const NfcAnimation = () => {
         style={{ transitionDelay: isRevealed ? '1000ms' : '0ms', left: '55%' }}
       >
         <Image
-          src='/images/chip-nfc.png'
+          src='/images/chip-nfc.webp'
           alt="NFC Signal"
           width={200}
           height={200}
@@ -58,7 +58,7 @@ const NfcAnimation = () => {
         style={{ transitionDelay: isRevealed ? '500ms' : '0ms' }}
       >
         <Image
-          src='/images/chip.png'
+          src='/images/chip.webp'
           alt="NFC Chip"
           width={180}
           height={180}
@@ -71,7 +71,7 @@ const NfcAnimation = () => {
         className={`absolute transition-transform duration-1000 ease-in-out ${isRevealed ? '-translate-x-24' : 'translate-x-0'}`}
       >
         <Image
-          src='/images/tag.png'
+          src='/images/tag.webp'
           alt="NFC Tag"
           width={145}
           height={145}
