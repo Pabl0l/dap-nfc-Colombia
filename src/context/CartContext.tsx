@@ -74,10 +74,22 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  const parsePrice = (price: string): number => {
+    return parseFloat(price.replace(/[^\d,]/g, '').replace(',', '.'));
+  };
+
   const getCartTotal = () => {
     return cart.reduce((total, item) => {
-      const priceNumber = parseInt(item.price.replace(/\$|\./g, ''));
-      return total + priceNumber * item.quantity;
+      let itemTotal = 0;
+      if (item.bundle) {
+        const bundlePrice = parsePrice(item.bundle.price);
+        const additionalPrice = parsePrice(item.bundle.additionalUnitPrice);
+        const additionalUnits = item.quantity - item.bundle.minUnits;
+        itemTotal = bundlePrice + (additionalUnits > 0 ? additionalUnits * additionalPrice : 0);
+      } else if (item.price) {
+        itemTotal = parsePrice(item.price) * item.quantity;
+      }
+      return total + itemTotal;
     }, 0);
   };
 

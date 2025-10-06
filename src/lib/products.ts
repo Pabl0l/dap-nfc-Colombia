@@ -4,7 +4,12 @@ export type Product = {
   name: string;
   category: 'Tags' | 'Stickers' | 'Cards';
   description: string;
-  price: string;
+  price?: string;
+  bundle?: {
+    minUnits: number;
+    price: string;
+    additionalUnitPrice: string;
+  };
   image: string;
   practicalUses: string[];
 };
@@ -17,7 +22,11 @@ export const products: Product[] = [
     name: 'Tag Custom',
     category: 'Tags',
     description: 'Un tag circular y minimalista con tu logo que transforma cualquier superficie en un punto de conexión instantáneo.',
-    price: '$8.000',
+    bundle: {
+      minUnits: 3,
+      price: '$20.000',
+      additionalUnitPrice: '$5.000',
+    },
     image: '/images/tag-custom.jpg',
     practicalUses: [
       'Compartir tu contacto.',
@@ -32,7 +41,11 @@ export const products: Product[] = [
     name: 'Mini CD',
     category: 'Tags',
     description: 'Fusiona la nostalgia de un mini CD con tecnología NFC para compartir tu universo sonoro de forma memorable.',
-    price: '$8.000',
+    bundle: {
+      minUnits: 3,
+      price: '$20.000',
+      additionalUnitPrice: '$5.000',
+    },
     image: '/images/tag-mini-cd.jpg',
     practicalUses: [
       'Regalar una playlist.',
@@ -62,7 +75,7 @@ export const products: Product[] = [
     name: 'Mini Case',
     category: 'Tags',
     description: 'Personaliza tu tag Mini CD con una carátula que completa su icónica estética retro.',
-    price: '$15.000',
+    price: '$20.000',
     image: '/images/mini-cd-case.jpg',
     practicalUses: [
       'Regala una playlist.',
@@ -78,9 +91,13 @@ export const products: Product[] = [
     slug: 'sticker-custom',
     name: 'Sticker Custom',
     category: 'Stickers',
-    price: '$5.000',
-    image: '/images/sticker.jpg',
     description: 'Adhiere este sticker personalizable a cualquier objeto y conviértelo en una puerta de entrada a tu mundo digital.',
+    bundle: {
+      minUnits: 5,
+      price: '$20.000',
+      additionalUnitPrice: '$3.500',
+    },
+    image: '/images/sticker.jpg',
     practicalUses: [
       'Pegarlo en tu laptop para compartir tu LinkedIn.',
       'En tu agenda para acceder a tus notas digitales.',
@@ -94,7 +111,11 @@ export const products: Product[] = [
     name: 'Menú sticker',
     category: 'Stickers',
     description: 'Eleva la experiencia de tu restaurante con un sticker elegante que presenta tu menú de forma fluida y sin esfuerzo.',
-    price: '$5.000',
+    bundle: {
+      minUnits: 12,
+      price: '$40.000',
+      additionalUnitPrice: '$3.500',
+    },
     image: '/images/menu.jpg',
     practicalUses: [
       'Acceso al menú digital en restaurantes.',
@@ -111,7 +132,7 @@ export const products: Product[] = [
     name: 'Card Custom',
     category: 'Cards',
     description: 'Redefine el networking con una tarjeta de presentación premium que comparte tu mundo profesional con un solo toque.',
-    price: '$20.000',
+    price: '$35.000',
     image: '/images/card-custom.jpg',
     practicalUses: [
       'Networking en eventos y conferencias.',

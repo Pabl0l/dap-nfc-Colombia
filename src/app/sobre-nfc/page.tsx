@@ -8,13 +8,13 @@ export default function SobreNFCPage() {
   const features = [
     {
       icon: <Zap className="w-10 h-10 text-accent" />,
-      title: "¿Qué es la Tecnología NFC?",
+      title: "¿Qué es?",
       description: "Near Field Communication (NFC) es una tecnología de comunicación inalámbrica de corto alcance que permite el intercambio de datos entre dispositivos con solo acercarlos.",
       reverse: false
     },
     {
       icon: <Smartphone className="w-10 h-10 text-accent" />,
-      title: "Cómo Funciona",
+      title: "¿Cómo Funciona?",
       description: "Simplemente acerca cualquier smartphone moderno al tag NFC. No se necesitan aplicaciones especiales - el sistema operativo detecta automáticamente la información y pregunta al usuario si desea abrirla.",
       reverse: true
     },
@@ -31,7 +31,7 @@ export default function SobreNFCPage() {
     { text: "No requiere batería ni energía externa" },
     { text: "Compatible con la mayoría de smartphones modernos" },
     { text: "Interacción instantánea - menos de 1 segundo" },
-    { text: "Seguro - requiere proximidad de 4-10 cm" },
+    { text: "Utiliza tecnología moderna y es estéticamente atractivo" },
     { text: "Contenido actualizable" },
     { text: "Duradero y resistente al uso" }
   ];

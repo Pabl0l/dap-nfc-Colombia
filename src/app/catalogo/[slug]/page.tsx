@@ -1,55 +1,94 @@
-'use client'
-// Página de detalle del producto
+'use client';
 
-import { useState } from 'react';
-import { getProductBySlug } from '@/lib/products';
-import { notFound } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import Image from 'next/image';
+import { getProductBySlug, Product } from '@/lib/products';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { useCart } from '@/context/CartContext';
-import { Eye, ShoppingCart, CheckCircle } from 'lucide-react';
-import { FaWhatsapp } from 'react-icons/fa';
-import Link from 'next/link';
+import { CheckCircle, Minus, Plus, ShoppingCart, Eye } from 'lucide-react';
 
-type ProductPageProps = {
-  params: {
-    slug: string;
-  };
-};
-
-export default function ProductPage({ params }: ProductPageProps) {
-  const [isBlank, setIsBlank] = useState(false);
+const ProductDetailPage = () => {
+  const [product, setProduct] = useState<Product | null>(null);
+  const [quantity, setQuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState<string | null>(null);
   const [addedToCart, setAddedToCart] = useState(false);
-  const slug = params.slug;
-  const product = getProductBySlug(slug);
+  const [isBlank, setIsBlank] = useState(false);
   const { addToCart } = useCart();
+  const params = useParams();
 
-  if (!product) {
-    notFound();
-  }
+  const parsePrice = (price: string): number => {
+    return parseFloat(price.replace(/[^\d,]/g, '').replace(',', '.'));
+  };
+
+  useEffect(() => {
+    if (params.slug) {
+      const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
+      const fetchedProduct = getProductBySlug(slug);
+      if (fetchedProduct) {
+        setProduct(fetchedProduct);
+        if (fetchedProduct.bundle) {
+          setQuantity(fetchedProduct.bundle.minUnits);
+        }
+      }
+    }
+  }, [params.slug]);
+
+  useEffect(() => {
+    if (product) {
+      let price = 0;
+      if (product.bundle) {
+        const bundlePrice = parsePrice(product.bundle.price);
+        const additionalPrice = parsePrice(product.bundle.additionalUnitPrice);
+        const additionalUnits = quantity - product.bundle.minUnits;
+        price = bundlePrice + (additionalUnits > 0 ? additionalUnits * additionalPrice : 0);
+      } else if (product.price) {
+        price = parsePrice(product.price) * quantity;
+      }
+      setTotalPrice(new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(price));
+    }
+  }, [product, quantity]);
 
   const handleAddToCart = () => {
-    addToCart(product, 1);
-    setAddedToCart(true);
-    setTimeout(() => setAddedToCart(false), 2000); // Reset after 2 seconds
+    if (product) {
+      addToCart(product, quantity);
+      setAddedToCart(true);
+      setTimeout(() => {
+        setAddedToCart(false);
+      }, 1500);
+    }
   };
 
+  const handleQuantityChange = (amount: number) => {
+    const minQuantity = product?.bundle?.minUnits || 1;
+    setQuantity(prev => Math.max(minQuantity, prev + amount));
+  };
+
+  if (!product) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-background">
+        <div className="text-light">Cargando producto...</div>
+      </div>
+    );
+  }
+
   const blankImageSrc = product.image.replace(/(\.\w+$)/, '-blank$1');
+  const whatsappMessage = `¡Hola! Estoy interesado en el producto: ${product.name} (x${quantity}) por un total de ${totalPrice}. ¿Podrían darme más información?`;
 
   return (
-    <div className="bg-dark text-light">
-      <main className="container mx-auto px-4 py-16 md:py-24">
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-start">
-          {/* Image Column */}
-          <div className="relative w-full aspect-[1200/859] bg-primary/10 rounded-xl flex items-center justify-center shadow-lg overflow-hidden animate-fade-in">
+    <div className="bg-background text-light min-h-screen">
+      <div className="container mx-auto px-4 py-12 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+          <div className="relative aspect-[1200/859] rounded-xl overflow-hidden shadow-2xl shadow-accent/10">
             <Image
               src={product.image}
-              alt={`Imagen de ${product.name}`}
+              alt={product.name}
               fill
               className={`object-contain transition-opacity duration-500 ${isBlank ? 'opacity-0' : 'opacity-100'}`}
             />
             <Image
               src={blankImageSrc}
-              alt={`Imagen de ${product.name}`}
+              alt={product.name}
               fill
               className={`absolute top-0 left-0 object-contain transition-opacity duration-500 ${isBlank ? 'opacity-100' : 'opacity-0'}`}
             />
@@ -61,80 +100,77 @@ export default function ProductPage({ params }: ProductPageProps) {
               <Eye size={22} />
             </button>
           </div>
-
-          {/* Details Column */}
-          <div className="flex flex-col h-full animate-subtle-slide-up">
-            <div style={{ animationDelay: '100ms' }}>
-              <span className="text-sm font-medium text-accent">{product.category}</span>
-              <h1 className="font-display text-4xl md:text-5xl font-bold text-light mt-2 mb-4">
-                {product.name}
-              </h1>
-              <p className="text-lg text-light mb-6">
-                {product.description}
-              </p>
-              {product.slug === 'tag-menu' && (
-                <div className="bg-primary/30 p-4 rounded-lg mb-6 border border-accent/50 animate-fade-in">
-                  <p className="text-light text-base font-medium">
-                    ¿Necesitas una solución para tu negocio? Para restaurantes y empresas que requieren una cantidad superior, ofrecemos condiciones especiales.
+          
+          <div>
+            <span className="text-sm font-semibold text-accent tracking-widest uppercase">{product.category}</span>
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-light mt-2 mb-4">{product.name}</h1>
+            <p className="text-secondary text-lg mb-6">{product.description}</p>
+            
+            <div className="bg-dark rounded-lg p-6 mb-6 border border-secondary/30">
+              <div className="flex justify-between items-center mb-6">
+                <div>
+                  <p className="text-4xl font-display font-bold text-light">
+                    {totalPrice}
                   </p>
-                  <p className="text-accent text-sm mt-2">
-                    Contáctanos para una propuesta personalizada.
-                  </p>
+                  {product.bundle && (
+                     <p className="text-secondary mt-1">
+                      Paquete con mínimo {product.bundle.minUnits} unidades.
+                    </p>
+                  )}
                 </div>
-              )}
-              <p className="font-display text-4xl font-bold text-light mb-8">
-                {product.price}
-              </p>
-            </div>
-
-            <div className="mt-auto pt-8" style={{ animationDelay: '300ms' }}>
-              <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-                <button
+                <div className="flex items-center border border-secondary/30 rounded-lg">
+                  <button 
+                    onClick={() => handleQuantityChange(-1)}
+                    className="p-3 text-secondary hover:text-light transition-colors"
+                    aria-label="Disminuir cantidad"
+                    disabled={product.bundle ? quantity <= product.bundle.minUnits : quantity <= 1}
+                  >
+                    <Minus size={16} />
+                  </button>
+                  <span className="px-4 font-bold text-lg">{quantity}</span>
+                  <button 
+                    onClick={() => handleQuantityChange(1)}
+                    className="p-3 text-secondary hover:text-light transition-colors"
+                    aria-label="Aumentar cantidad"
+                  >
+                    <Plus size={16} />
+                  </button>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <button 
                   onClick={handleAddToCart}
-                  className={`w-full sm:w-[48%] py-3 px-4 sm:py-4 sm:px-6 rounded-lg font-bold text-base sm:text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 ${
+                  disabled={addedToCart}
+                  className={`w-full flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-semibold transition-all duration-300 ${
                     addedToCart
                       ? 'bg-green-500 text-white'
-                      : 'bg-accent text-light hover:bg-secondary hover:text-light'
+                      : 'bg-accent text-light hover:bg-secondary'
                   }`}
-                  disabled={addedToCart}
                 >
-                  {addedToCart ? (
-                    <><CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" /> Añadido</>
-                  ) : (
-                    <><ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6" /> Añadir al Carrito</>
-                  )}
+                  {addedToCart ? <CheckCircle /> : <ShoppingCart />}
+                  {addedToCart ? 'Añadido' : 'Añadir al carrito'}
                 </button>
-                <Link
-                  href={`https://wa.me/+573001234567?text=Hola,%20estoy%20interesado%20en%20el%20producto:%20${product.name}%20del%20catálogo%20de%20dap%20NFC%20Colombia.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-[48%] py-3 px-4 sm:py-4 sm:px-6 rounded-lg font-bold text-base sm:text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 bg-green-500 text-white hover:bg-green-600"
-                >
-                  <FaWhatsapp className="w-5 h-5 sm:w-6 sm:h-6" />
-                  <span className="hidden sm:inline">Preguntar por WhatsApp</span>
-                  <span className="sm:hidden">WhatsApp</span>
-                </Link>
+                <WhatsAppButton message={whatsappMessage} phoneNumber="+573042181853" />
               </div>
             </div>
 
-            {/* Practical Uses Section */}
-            {product.practicalUses && product.practicalUses.length > 0 && (
-              <div className="mt-12" style={{ animationDelay: '200ms' }}>
-                <h2 className="font-display text-2xl font-bold text-light mb-5">
-                  Usos Prácticos
-                </h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {product.practicalUses.map((use, index) => (
-                    <div key={index} className="bg-primary/20 p-4 rounded-lg shadow-sm">
-                      <p className="text-secondary">{use}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            <div>
+              <h3 className="font-display text-xl font-bold text-light mb-3">Usos prácticos</h3>
+              <ul className="space-y-2">
+                {product.practicalUses.map((use, index) => (
+                  <li key={index} className="flex items-start">
+                    <CheckCircle className="text-accent w-5 h-5 mr-3 mt-1 flex-shrink-0" />
+                    <span className="text-secondary">{use}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
-}
+};
+
+export default ProductDetailPage;

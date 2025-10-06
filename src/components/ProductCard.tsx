@@ -20,7 +20,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    addToCart(product, 1);
+    const quantityToAdd = product.bundle ? product.bundle.minUnits : 1;
+    addToCart(product, quantityToAdd);
     setAddedToCart(true);
     setTimeout(() => {
       setAddedToCart(false);
@@ -38,7 +39,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <Link 
       href={`/catalogo/${product.slug}`}
-      className="block group bg-dark rounded-xl overflow-hidden border border-secondary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-2 flex flex-col h-full"
+      className="block group bg-dark rounded-xl overflow-hidden border border-secondary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-2 flex-col h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -66,14 +67,29 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <div className="p-5 flex flex-col flex-grow">
         <span className="text-xs font-semibold text-accent tracking-widest uppercase">{product.category}</span>
         <h3 className="font-display text-xl font-bold text-light mt-2 mb-2 truncate">{product.name}</h3>
-        <p className="text-secondary text-sm mb-4 h-20 overflow-hidden">
+        <p className="text-secondary text-base mb-4 h-20 overflow-hidden">
           {product.description}
         </p>
         
         <div className="mt-auto flex justify-between items-center">
-          <p className="text-2xl font-display font-bold text-light">
-            {product.price}
-          </p>
+          {product.price ? (
+            <p className="text-2xl font-display font-bold text-light">
+              {product.price}
+            </p>
+          ) : product.bundle ? (
+            <div>
+              <p className="text-lg font-display font-bold text-light">
+                Desde {product.bundle.price}
+              </p>
+              <p className="text-xs text-secondary">
+                Paquete de mínimo {product.bundle.minUnits} unidades
+              </p>
+            </div>
+          ) : (
+            <p className="text-lg font-display font-bold text-light">
+              Consultar precio
+            </p>
+          )}
           <button 
             onClick={handleAddToCart} 
             disabled={addedToCart}
