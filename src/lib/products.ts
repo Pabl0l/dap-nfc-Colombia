@@ -12,9 +12,26 @@ export type Product = {
   };
   image: string;
   practicalUses: string[];
+  isMostSold?: boolean;
 };
 
 export const products: Product[] = [
+  {
+    id: 'mini-cd-case',
+    slug: 'mini-cd-case',
+    name: 'Mini Case',
+    category: 'Tags',
+    description: 'Personaliza tu tag Mini CD con una carátula que completa su icónica estética retro.',
+    price: '$20.000',
+    image: '/images/mini-cd-case.jpg',
+    practicalUses: [
+      'Regala una playlist.',
+      'Colección retro personalizada.',
+      'Merchandising original para fans.',
+      'Compartir instrucciones de uso.',
+    ],
+    isMostSold: true,
+  },
   // Categoria: Tags
   {
     id: 'tag-custom',
@@ -38,7 +55,7 @@ export const products: Product[] = [
   {
     id: 'tag-mini-cd',
     slug: 'tag-mini-cd',
-    name: 'Mini CD',
+    name: 'Tag CD',
     category: 'Tags',
     description: 'Fusiona la nostalgia de un mini CD con tecnología NFC para compartir tu universo sonoro de forma memorable.',
     bundle: {
@@ -59,29 +76,13 @@ export const products: Product[] = [
     slug: 'tag-pet',
     name: 'PetTag',
     category: 'Tags',
-    description: 'Mantén a tu mascota segura y conectada con una placa inteligente que comparte su información esencial al instante.',
-    price: '$12.000',
+    description: 'Mantén a tu mascota segura y conectada con una placa inteligente que comparte su información esencial al instante.',    price: '$12.000',
     image: '/images/tag-pet.jpg',
     practicalUses: [
       'Almacenar datos de contacto del dueño.',
       'Guardar información médica importante.',
       'Registrar la dirección de casa en Google Maps.',
       'Compartir el perfil de Instagram de tu mascota.',
-    ],
-  },
-  {
-    id: 'mini-cd-case',
-    slug: 'mini-cd-case',
-    name: 'Mini Case',
-    category: 'Tags',
-    description: 'Personaliza tu tag Mini CD con una carátula que completa su icónica estética retro.',
-    price: '$20.000',
-    image: '/images/mini-cd-case.jpg',
-    practicalUses: [
-      'Regala una playlist.',
-      'Colección retro personalizada.',
-      'Merchandising original para fans.',
-      'Compartir instrucciones de uso.',
     ],
   },
 

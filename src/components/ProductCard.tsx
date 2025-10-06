@@ -44,6 +44,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative w-full aspect-[1200/859] bg-dark flex items-center justify-center overflow-hidden">
+        {product.isMostSold && (
+          <div className="absolute top-0 left-0 z-10 bg-red-500 text-light text-xs font-bold px-3 py-1 rounded-br-lg rounded-tl-xl">
+            ¡Más vendido!
+          </div>
+        )}
         <Image 
           src={product.image} 
           alt={product.name} 
