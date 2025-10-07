@@ -16,7 +16,7 @@ const NFCIntroAnimation = () => {
 
   return (
     <motion.div
-      className="text-light md:text-accent font-extrabold tracking-custom w-full px-4 text-left ml-[5%] md:mx-auto md:text-center"
+      className="text-light md:text-accent font-extrabold tracking-custom w-full px-4 text-left md:mx-auto md:text-center"
     >
       {lines.map((line, lineIndex) => (
         <span key={lineIndex} className="flex"> {/* Each line is a block */}
