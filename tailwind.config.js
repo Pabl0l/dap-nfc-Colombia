@@ -18,6 +18,9 @@ module.exports = {
         sans: ['var(--font-outfit)', 'sans-serif'],
         display: ['var(--font-poppins)', 'sans-serif'],
       },
+      letterSpacing: {
+        custom: '0.1em',
+      },
       backgroundImage: {
         'grid-pattern': "url('/grid.svg')",
       },

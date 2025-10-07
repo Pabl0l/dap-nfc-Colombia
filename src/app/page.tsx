@@ -5,11 +5,11 @@ import NFCIntroAnimation from '@/components/NFCIntroAnimation';
 export default function Home() {
   return (
     <section className="relative min-h-[88dvh] flex items-center justify-center bg-dark overflow-hidden">
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-0">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <div className="md:grid md:grid-cols-2 md:gap-8 items-center">
           {/* Left Column: NFC Animation */}
-          <div className="text-center md:text-left mb-10 md:mb-0">
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-extrabold text-light tracking-tighter mb-6 animate-subtle-slide-up">
+          <div className="md:text-left mb-10 md:mb-0">
+            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-extrabold text-light tracking-tighter mb-6 animate-subtle-slide-up w-full">
               <NFCIntroAnimation />
             </h1>
           </div>

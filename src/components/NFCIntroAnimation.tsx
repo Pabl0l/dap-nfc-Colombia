@@ -16,10 +16,10 @@ const NFCIntroAnimation = () => {
 
   return (
     <motion.div
-      className="text-light md:text-accent font-extrabold tracking-tighter mx-auto w-full px-4"
+      className="text-light md:text-accent font-extrabold tracking-custom w-full px-4 text-left ml-[5%] md:mx-auto md:text-center"
     >
       {lines.map((line, lineIndex) => (
-        <span key={lineIndex} className="block"> {/* Each line is a block */}
+        <span key={lineIndex} className="flex"> {/* Each line is a block */}
           {line.map((word, wordIndexInLine) => (
             <span key={wordIndexInLine} className="inline-block mr-2"> {/* Words within a line are inline-block */}
               {word.split("").map((char, charIndex) => {
@@ -39,7 +39,7 @@ const NFCIntroAnimation = () => {
                     key={charIndex}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0, transition: { delay, duration: 0.5 } }}
-                    className="text-accent text-6xl md:text-8xl lg:text-9xl"
+                    className="text-accent text-5xl md:text-8xl lg:text-9xl"
                   >
                     {char}
                   </motion.span>
